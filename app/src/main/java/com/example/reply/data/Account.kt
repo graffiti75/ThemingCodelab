@@ -14,19 +14,23 @@
  * limitations under the License.
  */
 
-package com.example.reply
+package com.example.reply.data
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import com.example.reply.ui.theme.ReplyTheme
+import androidx.annotation.DrawableRes
 
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            ReplyTheme {
-            }
-        }
-    }
+/**
+ * An object which represents an account which can belong to a user. A single user can have
+ * multiple accounts.
+ */
+data class Account(
+    val id: Long,
+    val uid: Long,
+    val firstName: String,
+    val lastName: String,
+    val email: String,
+    val altEmail: String,
+    @DrawableRes val avatar: Int,
+    var isCurrentAccount: Boolean = false
+) {
+    val fullName: String = "$firstName $lastName"
 }
